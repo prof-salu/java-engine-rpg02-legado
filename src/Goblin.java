@@ -1,22 +1,27 @@
-public class Goblin {
+// 1. Implementa a interface Cloneable nativa do Java
+public class Goblin implements Cloneable {
     private String nome;
     private int vida;
 
-    // ERRO: Construtor extremamente pesado.
-    // Fazer 'new' nisto muitas vezes vai congelar o jogo.
     public Goblin() {
         this.nome = "Goblin Básico";
         this.vida = 100;
-
         try {
-            // Simula o carregamento de Inteligência Artificial e Texturas 3D
-            Thread.sleep(10);
+            Thread.sleep(10); // Construtor lento e custoso
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
 
-    public void exibir() {
-        System.out.println("Monstro: " + nome + " | Vida: " + vida);
+    // 2. Sobrescreve o método clone para retornar a cópia
+    @Override
+    public Goblin clone() {
+        try {
+            return (Goblin) super.clone(); // Mitose (Cópia exata em milissegundos)
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
     }
+
+    public void exibir() { System.out.println("Monstro: " + nome + " | Vida: " + vida); }
 }
