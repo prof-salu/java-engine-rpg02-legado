@@ -49,7 +49,7 @@ Objetivo: Parar de chamar o construtor lento do Goblin milhares de vezes.
 
 Ação: Implementar a interface Cloneable e fazer a mitose celular: criar apenas um Goblin mestre e cloná-lo rapidamente para formar a horda.
 
-**3. A Espada Mágica (Decorator)**
+**3. A EspadaBase Mágica (Decorator)**
 
 Objetivo: Adicionar magias a uma arma de forma acumulativa sem precisar usar herança ou criar novas classes filhas.
 
