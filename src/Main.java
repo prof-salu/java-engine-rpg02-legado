@@ -10,16 +10,22 @@ public class Main {
         // O programador cria os itens manualmente com 'ifs'.
         // Risco alto: Um erro de digitação e o Elfo recebe equipamento de Orc.
         // ------------------------------------------------------------------------
-        System.out.println("--- 1. Criando Personagem ---");
-        String racaEscolhida = "Elfo";
+        FabricaEquipamentos fabricaOrc = new FabricaOrquica();
+        Arma armaOrc = fabricaOrc.criarArma();
+        Armadura armaduraOrc = fabricaOrc.criarArmadura();
 
-        if (racaEscolhida.equals("Elfo")) {
-            EspadaElfica arma = new EspadaElfica();
-            // ERRO SIMULADO: O programador enganou-se e deu uma armadura Orc ao Elfo!
-            ArmaduraOrc armadura = new ArmaduraOrc();
-            arma.exibir();
-            armadura.exibir();
-        }
+        FabricaEquipamentos fabricaElfo = new FabricaElfica();
+        Arma armaElfo = fabricaElfo.criarArma();
+        Armadura armaduraElfo = fabricaElfo.criarArmadura();
+        System.out.println("ORCS");
+        armaOrc.exibir();
+        armaduraOrc.exibir();
+
+        System.out.println();
+        System.out.println("ELFO");
+        armaElfo.exibir();
+        armaduraElfo.exibir();
+
         System.out.println();
 
         // ------------------------------------------------------------------------
