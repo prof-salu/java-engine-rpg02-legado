@@ -1,4 +1,4 @@
-public class Goblin {
+public class Goblin implements Cloneable{
     private String nome;
     private int vida;
 
@@ -13,6 +13,15 @@ public class Goblin {
             Thread.sleep(10);
         } catch (InterruptedException e) {
             e.printStackTrace();
+        }
+    }
+
+    @Override
+    protected Goblin clone(){
+        try{
+            return (Goblin) super.clone();
+        }catch (CloneNotSupportedException e){
+            throw new AssertionError();
         }
     }
 

@@ -17,6 +17,7 @@ public class Main {
         FabricaEquipamentos fabricaElfo = new FabricaElfica();
         Arma armaElfo = fabricaElfo.criarArma();
         Armadura armaduraElfo = fabricaElfo.criarArmadura();
+
         System.out.println("ORCS");
         armaOrc.exibir();
         armaduraOrc.exibir();
@@ -37,11 +38,10 @@ public class Main {
         System.out.println("A carregar monstros (Isto vai demorar...)");
         long tempoInicio = System.currentTimeMillis();
         List<Goblin> horda = new ArrayList<>();
-
+        Goblin goblin = new Goblin();
         for (int i = 0; i < 1000; i++) {
-            horda.add(new Goblin()); // Faz o 'new' 1000 vezes!
+            horda.add(goblin.clone());
         }
-
         long tempoFim = System.currentTimeMillis();
         System.out.println("1000 Goblins gerados em " + (tempoFim - tempoInicio) + " ms.");
         System.out.println();
@@ -51,8 +51,8 @@ public class Main {
         // A espada está engessada na hierarquia de classes.
         // ------------------------------------------------------------------------
         System.out.println("--- 3. Espada Mágica ---");
-        EspadaDeFogoEGelo espadaPoderosa = new EspadaDeFogoEGelo();
-        System.out.println("Poder da espada combinada (Fogo + Gelo): " + espadaPoderosa.getPoder());
+        ItemMagico espadaFogoGelo = new FogoDecorator(new GeloDecorator(new EspadaBase()));
+        System.out.println("Poder da espada combinada (Fogo + Gelo): " + espadaFogoGelo.getPoder());
         System.out.println();
 
         // ------------------------------------------------------------------------
@@ -66,7 +66,8 @@ public class Main {
 
         for (int i = 0; i < 10000; i++) {
             // A mesma String pesada é guardada 10.000 vezes em memória
-            floresta.add(new Arvore(i, i, texturaPesada));
+            TipoArvore tipo = GerenciadorDeArvores.getTipoArvore(texturaPesada);
+            floresta.add(new Arvore(5, 10, tipo));
         }
         System.out.println("Floresta criada com 10.000 árvores pesadas na memória!");
     }
